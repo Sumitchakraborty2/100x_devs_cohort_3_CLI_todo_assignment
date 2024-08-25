@@ -19,7 +19,7 @@ function write(todos) {
 function showTodo() {
   const todos = read();
   if (todos.length === 0) {
-    console.log(chalk.yellow("No todos found. Add some tasks!"));
+    console.log(chalk.hex('#f4d209')("No todos found. Add some tasks!"));
     return;
   }
 
@@ -73,7 +73,7 @@ function updateTodo(tableNum) {
     todos[index].done = !todos[index].done;
     write(todos);
     const status = todos[index].done ? "✓ Completed" : "⧖ Pending";
-    console.log(chalk.red.bold(`Updated Todo #${index + 1} status to: `) + chalk.cyan.underline(status));
+    console.log(chalk.hex('#077e30')(`Updated Todo #${index + 1} status to: `) + chalk.cyan.underline(status));
   } else {
     console.log(chalk.red("Invalid input."));
   }
@@ -86,7 +86,7 @@ function deleteTodo(tableNum) {
   if (index >= 0 && index < todos.length) {
     const [deleted_obj] = todos.splice(index, 1);
     write(todos);
-    console.log(chalk.red.bold("Removed Todo: ") + chalk.cyan.underline(deleted_obj.task));
+    console.log(chalk.red("Removed Todo: ") + chalk.cyan.underline(deleted_obj.task));
   } else {
     console.log(chalk.red("Invalid input."));
   }
